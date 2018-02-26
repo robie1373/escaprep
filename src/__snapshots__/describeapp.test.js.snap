@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="appDescription"
+>
+  <p>
+    This page is used to import a single csv file from Phishme, rearrange the columns to support the powershell script and allow the user to download the new file.
+  </p>
+</div>
+`;

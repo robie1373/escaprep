@@ -1,0 +1,26 @@
+{
+  "name": "escaprep",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "hammer": "0.0.5",
+    "muuri": "^0.5.3",
+    "papaparse": "^4.3.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-file-reader": "^1.1.3",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.2.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react-test-renderer": "^16.2.0"
+  }
+}
