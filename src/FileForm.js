@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
 import ReactFileReader from 'react-file-reader';
-import UnorderedList from './UnorderedList';
 
 class FileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasError: false,
-      inFile: ''
+      hasError: false
     };
 
     this.parseFiles = this.parseFiles.bind(this);
     this.testableReactFileReader = this.testableReactFileReader.bind(this);
-    //this.stateSetter = this.stateSetter.bind(this);
   }
 
   componentDidCatch(error, info) {
@@ -23,19 +20,16 @@ class FileForm extends Component {
       console.log(error);
       console.log(info);
     }
-/*
-  stateSetter = data => {
-    this.props.stateSetter(data);
-  }
-*/
+
   parseFiles = files => {
-    Papa.parse(files[0], {
-      header: true,
-      complete: (results) => {
-        //this.setState({parsedData: results})
-        this.props.stateSetter(results);
-      }
-    });
+    if (files.length > 0) {
+      Papa.parse(files[0], {
+        header: true,
+        complete: (results) => {
+          this.props.stateSetter(results);
+        }
+      });
+    }
   }
 
   testableReactFileReader = () => {
@@ -52,7 +46,7 @@ class FileForm extends Component {
       );
     }
   }
-//  <UnorderedList items={this.props.parsedData} />
+
   render() {
     if (this.state.hasError) {
       return (
@@ -63,17 +57,7 @@ class FileForm extends Component {
       )
     }
     return (
-      <div className="fileForm">
-
-        <this.testableReactFileReader />
-
-        <pre>
-          {this.state.inFile}
-        </pre>
-        <pre>
-
-        </pre>
-      </div>
+      <this.testableReactFileReader />
     );
   }
 }
