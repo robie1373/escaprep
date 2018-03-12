@@ -2,41 +2,33 @@
 
 exports[`snapshot 1`] = `
 <div
-  className="fileForm"
+  className="react-file-reader"
 >
+  <input
+    accept=".csv"
+    className="react-file-reader-input"
+    id="0d8f72bc-f98a-415e-aba9-c2b77dfc243c"
+    multiple={false}
+    onChange={
+      Array [
+        [Function],
+      ]
+    }
+    type="file"
+  />
   <div
-    className="react-file-reader"
+    className="react-file-reader-button"
+    onClick={
+      Array [
+        [Function],
+      ]
+    }
   >
-    <input
-      accept=".csv"
-      className="react-file-reader-input"
-      id="0d8f72bc-f98a-415e-aba9-c2b77dfc243c"
-      multiple={false}
-      onChange={
-        Array [
-          [Function],
-        ]
-      }
-      type="file"
-    />
-    <div
-      className="react-file-reader-button"
-      onClick={
-        Array [
-          [Function],
-        ]
-      }
+    <button
+      className="fileUploadButton"
     >
-      <button
-        className="fileUploadButton"
-      >
-        Upload File
-      </button>
-    </div>
+      Upload File
+    </button>
   </div>
-  <pre>
-    
-  </pre>
-  <pre />
 </div>
 `;

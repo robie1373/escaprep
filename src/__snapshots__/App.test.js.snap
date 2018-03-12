@@ -4,7 +4,9 @@ exports[`snapshot 1`] = `
 <div
   className="App"
 >
-  <div>
+  <div
+    className="noTable"
+  >
     <header
       className="App-header"
     >
@@ -20,49 +22,41 @@ exports[`snapshot 1`] = `
       </h1>
     </header>
     <div
-      className="appDescription"
+      id="appDescription"
     >
       <p>
-        This page is used to import a single csv file from Phishme, rearrange the columns to support the powershell script and allow the user to download the new file.
+        This page is used to import a single csv file from Phishme, rearrange the columns to meet mail merge in Outlook's expectations and allow the user to download the new file.
       </p>
     </div>
     <div
-      className="fileForm"
+      className="react-file-reader"
     >
+      <input
+        accept=".csv"
+        className="react-file-reader-input"
+        id="0d8f72bc-f98a-415e-aba9-c2b77dfc243c"
+        multiple={false}
+        onChange={
+          Array [
+            [Function],
+          ]
+        }
+        type="file"
+      />
       <div
-        className="react-file-reader"
+        className="react-file-reader-button"
+        onClick={
+          Array [
+            [Function],
+          ]
+        }
       >
-        <input
-          accept=".csv"
-          className="react-file-reader-input"
-          id="0d8f72bc-f98a-415e-aba9-c2b77dfc243c"
-          multiple={false}
-          onChange={
-            Array [
-              [Function],
-            ]
-          }
-          type="file"
-        />
-        <div
-          className="react-file-reader-button"
-          onClick={
-            Array [
-              [Function],
-            ]
-          }
+        <button
+          className="fileUploadButton"
         >
-          <button
-            className="fileUploadButton"
-          >
-            Upload File
-          </button>
-        </div>
+          Upload File
+        </button>
       </div>
-      <pre>
-        
-      </pre>
-      <pre />
     </div>
   </div>
 </div>

@@ -25,7 +25,9 @@ class FileForm extends Component {
     if (files.length > 0) {
       Papa.parse(files[0], {
         header: true,
+        //preview: 5,
         complete: (results) => {
+          //results.data = results.data.slice(0, 5);
           this.props.stateSetter(results);
         }
       });
@@ -40,7 +42,7 @@ class FileForm extends Component {
     }
     else {
       return(
-        <ReactFileReader fileTypes={'.csv'} handleFiles={this.parseFiles}>
+        <ReactFileReader id={"file-uploader"} fileTypes={'.csv'} handleFiles={this.parseFiles}>
           <button className='fileUploadButton'>Upload File</button>
         </ReactFileReader>
       );

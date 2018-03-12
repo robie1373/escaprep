@@ -4,6 +4,7 @@ import ShowHeader from './ShowHeader';
 import DescribeApp from './DescribeApp';
 import FileForm from './FileForm';
 import DisplayTable from './DisplayTable';
+import DownloadForm from './DownloadForm';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
   }
 
   stateSetter = data => {
-    console.log(data.data);
+    //console.log(data.data);
     this.getHeaders(data);
 
     var cleanData = [];
@@ -33,19 +34,19 @@ class App extends Component {
       }
       cleanData.push(data.data[i]);
     }
-    console.log(cleanData);
+    //console.log(cleanData);
     for (var j=0; j<cleanData.length; j++) {
       //if ( Object.keys(data.data[i]).length < 2 ) {
         //console.log("Object.keys(data.data[i]).length < 2");
         //console.log("Object.keys(data.data[i] = )" + Object.keys(data.data[i]));
         //continue;
       //}
-      console.log(cleanData[j]);
+      //console.log(cleanData[j]);
       cleanData[j].rowNumber = (j + 1);
     }
-    console.log(cleanData);
+    console.log("clean data: " + JSON.stringify(cleanData));
     this.setState({parsedData: cleanData});
-    console.log(this.state.parsedData);
+    //console.log(this.state.parsedData);
   }
 
   getHeaders = (data) => {
@@ -72,56 +73,69 @@ class App extends Component {
     }
   }
 
-  handleMoveLeft = (index, event) => {
-    event.preventDefault();
-    console.log(event.currentTarget);
-    console.log(event.relatedTarget);
-    console.log("column #: " + index + " moves left");
-    let tempHeaders = this.state.headers;
-    console.log("tempHeaders: " + tempHeaders);
-    let target = this.state.headers[index];
-    console.log("target: " + target);
-    tempHeaders.splice(index, 1);
-    console.log("after removal: " + tempHeaders);
-    tempHeaders.splice((index - 1), 0, target);
-    console.log("after insertion: " + tempHeaders);
-    this.setState({headers: tempHeaders});
+  testableReactDownloadForm = () => {
+    if (this.props.filedownloader) {
+      return(
+        <DownloadForm filedownloader={this.props.filedownloader}
+          exportData={this.state.parsedData}
+          headers={this.state.headers}
+        />
+      );
+    }
+    else {
+      return(
+        <DownloadForm exportData={this.state.parsedData}
+          headers={this.state.headers}
+        />
+      );
+    }
   }
 
-  handleMoveRight = (index, event) => {
+  handleMove = (left, index, event) => {
     event.preventDefault();
-    console.log(event.currentTarget);
-    console.log(event.relatedTarget);
-    console.log("column #: " + index + " moves right");
-    let tempHeaders = this.state.headers;
-    console.log("tempHeaders: " + tempHeaders);
-    let target = this.state.headers[index];
-    console.log("target: " + target);
-    tempHeaders.splice(index, 1);
-    console.log("after removal: " + tempHeaders);
-    tempHeaders.splice((index + 1), 0, target);
-    console.log("after insertion: " + tempHeaders);
-    this.setState({headers: tempHeaders});
+    let motion;
+    let continuefunc = true;
+    if (left) {
+      if (index === 0) {
+        continuefunc = false;
+      }
+      motion = (index - 1);
+    } else {
+      if (index === (this.state.headers.length - 1)){
+        continuefunc = false;
+      }
+      motion = (index + 1);
+    }
+    if (continuefunc) {
+      let tempHeaders = this.state.headers;
+      //console.log("tempHeaders: " + tempHeaders);
+      let target = this.state.headers[index];
+      //console.log("target: " + target);
+      tempHeaders.splice(index, 1);
+      //console.log("after removal: " + tempHeaders);
+      tempHeaders.splice(motion, 0, target);
+      //console.log("after insertion: " + tempHeaders);
+      this.setState({headers: tempHeaders});
+    }
   }
 
   toBeRendered = () => {
     if (this.state.parsedData) {
       return (
-        <div className="noTable">
+        <div className="withTable">
           <ShowHeader />
           <DescribeApp />
-          <this.testableFileForm />
+          <this.testableReactDownloadForm />
           <DisplayTable
             headers={this.state.headers}
             data={this.state.parsedData}
-            handleMoveLeft={this.handleMoveLeft}
-            handleMoveRight={this.handleMoveRight}
+            handleMove={this.handleMove}
           />
         </div>
       );
     } else {
       return (
-        <div className="withTable">
+        <div className="noTable">
           <ShowHeader />
           <DescribeApp />
           <this.testableFileForm />

@@ -57,10 +57,21 @@
 
 .left-arrow {
   padding-right: 1em;
-  background-color: lightblue;
 }
 
 .right-arrow {
   padding-left: 1em;
-  background-color: lightgreen;
+}
+
+.single-line {
+  white-space: nowrap;
+}
+
+.single-line-element {
+  display: inline-block;
+}
+
+.single-line-img {
+  display: inline-block;
+  max-width: 2em;
 }

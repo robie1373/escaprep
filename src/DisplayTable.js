@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import leftarrow from './images/left-arrow.png';
+import rightarrow from './images/right-arrow.png';
+
 const uuidv4 = require('uuid/v4');
 
 class DisplayTable extends Component {
@@ -17,24 +20,26 @@ class DisplayTable extends Component {
 
   ReturnHeaderCell = props => {
     return (
-      <div className="col-sm">
-        <span>
-          <span
-            className="left-arrow"
-            index={props.index}
-            onClick={(event) => this.props.handleMoveLeft(props.index, event)}
-          >
-            L
-          </span>
-          <span>{props.cellData}</span>
-          <span
-            className="right-arrow"
-            index={props.index}
-            onClick={(event) => this.props.handleMoveRight(props.index, event)}
-          >
-            R
-          </span>
-        </span>
+      <div className="col-sm single-line">
+
+            <img
+              src={leftarrow}
+              alt='left_arrow'
+              className="left-arrow img-fluid single-line-img"
+              index={props.index}
+              onClick={(event) => this.props.handleMove(true, props.index, event)}
+            />
+
+          <div className='single-line-element'>{props.cellData}</div>
+
+            <img
+              src={rightarrow}
+              alt='right_arrow'
+              className="right-arrow img-fluid single-line-img"
+              index={props.index}
+              onClick={(event) => this.props.handleMove(false, props.index, event)}
+            />
+
       </div>
     );
   }
@@ -58,7 +63,7 @@ class DisplayTable extends Component {
     }
     //console.log("rowData: " + String(rowData));
     const output = rowData.map((col) => <this.ReturnCell cellData={col} key={uuidv4()}/>);
-    console.log(rowData);
+    //console.log(rowData);
     return <div className="row">{output}</div>;
   }
 
