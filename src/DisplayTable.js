@@ -80,7 +80,9 @@ class DisplayTable extends Component {
 
   render () {
     return (
-      <this.returnRows data={this.props.data} />
+      <div className="csv-table">
+        <this.returnRows data={this.props.data} />
+      </div>
     );
   }
 }

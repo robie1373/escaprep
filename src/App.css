@@ -37,7 +37,7 @@
   height: 100px;
   margin: 5px;
   z-index: 1;
-  background: #000;
+  background: #112;
   color: #fff;
 }
 .item.muuri-item-dragging {
@@ -74,4 +74,26 @@
 .single-line-img {
   display: inline-block;
   max-width: 2em;
+}
+
+#appDescription {
+  max-width: 40%;
+}
+
+#react-download-form {
+  max-width: 40%;
+}
+
+.react-file-reader {
+  max-width: 40%;
+}
+
+.csv-table {
+  margin-top: 4em;
+  border-radius: 1em;
+  /*
+  margin-left: 1em;
+  margin-right: 1em;
+  border: 1px solid gray;
+  */
 }

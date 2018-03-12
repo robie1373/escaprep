@@ -84,9 +84,11 @@ class App extends Component {
     }
     else {
       return(
-        <DownloadForm exportData={this.state.parsedData}
-          headers={this.state.headers}
-        />
+        <div id="react-download-form">
+          <DownloadForm exportData={this.state.parsedData}
+            headers={this.state.headers}
+          />
+        </div>
       );
     }
   }
