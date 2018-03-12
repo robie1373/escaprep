@@ -25,7 +25,7 @@ exports[`snapshot 1`] = `
       id="appDescription"
     >
       <p>
-        This page is used to import a single csv file from Phishme or Jim's script, rearrange the columns to meet the expectations of mail merge in Outlook and allow the user to download the new file.
+        This page is used to import a single csv file, rearrange the columns to meet the expectations of mail merge in Outlook and allow the user to download the new file.
       </p>
       <p>
         To start over, refresh the page.
